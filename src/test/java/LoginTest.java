@@ -24,7 +24,6 @@ public class LoginTest extends BaseTest {
 
     @Test
     public void checkLogin() {
-
         driver.findElement(By.cssSelector("[id='user-name']")).sendKeys("standard_user");
         driver.findElement(By.xpath("//*[@placeholder='Password']")).sendKeys("secret_sauce");
         driver.findElement(By.cssSelector("[data-test='login-button']")).click();
@@ -34,7 +33,6 @@ public class LoginTest extends BaseTest {
 
     @Test
     public void checkIncorrectLogin() {
-
         driver.get("https://www.saucedemo.com/");
         driver.findElement(By.cssSelector("[id='user-name']")).sendKeys("locked_out_user");
         driver.findElement(By.xpath("//*[@placeholder='Password']")).sendKeys("secret_sauce");
@@ -44,5 +42,4 @@ public class LoginTest extends BaseTest {
         String errorMessageText = driver.findElement(By.xpath("//*[@data-test='error']")).getText();
         assertEquals(errorMessageText, "Epic sadface: Username and password do not match any user in this service");
     }
-
 }
