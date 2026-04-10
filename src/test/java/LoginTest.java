@@ -15,29 +15,22 @@ public class LoginTest extends BaseTest {
     public void close() {
         driver.quit();
     }
-
     @BeforeMethod
     public void setup() {
         driver = new ChromeDriver();
         driver.get("https://www.saucedemo.com/");
     }
-
     @Test
     public void checkLogin() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
-
         assertEquals(productsPage.getTitle(), "Products");
     }
-
     @Test
     public void checkIncorrectLogin() {
         loginPage.open();
         loginPage.login("locked_out_user", "secret_sauce");
-
         assertTrue(loginPage.isErrorMsgDisplayed(), "The error message fails to apper");
-
-
         assertEquals(loginPage.errorMessageText(), "Epic sadface: Username and password do not match any user in this service");
     }
 }
