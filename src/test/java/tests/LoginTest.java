@@ -1,8 +1,5 @@
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+package tests;
+
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -10,26 +7,12 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public class LoginTest extends BaseTest {
-    WebDriver driver;
-
-    @AfterMethod
-    public void close() {
-        driver.quit();
-    }
-
-    @BeforeMethod
-    public void setup() {
-        driver = new ChromeDriver();
-        driver.get("https://www.saucedemo.com/");
-    }
-
     @Test
     public void checkLogin() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
         assertEquals(productsPage.getTitle(), "Products");
     }
-
 
     @Test(dataProvider = "incorrctDate")
     public void checkIncorrectLogin(String user, String password, String errorMeesage) {
@@ -40,7 +23,7 @@ public class LoginTest extends BaseTest {
                 "Error message doesen't correspond");
     }
 
-    @DataProvider (name= "incorrctDate")
+    @DataProvider(name = "incorrctDate")
     public Object[][] loginData() {
         return new Object[][]{
                 {"locked_out_user", "secret_sauce", "Epic sadface: Sorry, this user has been locked out."},
@@ -50,8 +33,6 @@ public class LoginTest extends BaseTest {
         };
     }
 }
-
-
 /*    @Test
     public void checkEmptyUserLogin() {
         loginPage.open();
@@ -78,3 +59,5 @@ public class LoginTest extends BaseTest {
         assertEquals(loginPage.errorMessageText(), "Epic sadface: Username and password do not match any user in this service",
                 "Error message doesen't correspond");
     }
+
+ */
