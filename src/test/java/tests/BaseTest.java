@@ -1,3 +1,5 @@
+package tests;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -17,7 +19,7 @@ public class BaseTest {
     public void setup() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("start-maximized");
-        options.addArguments("headless");
+        options.addArguments("qeust");
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
@@ -27,6 +29,6 @@ public class BaseTest {
 
     @AfterMethod
     public void close() {
-        driver.quit();
+         driver.quit();
     }
 }
