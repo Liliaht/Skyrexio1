@@ -15,7 +15,6 @@ public class LoginPage extends BasePage {
     }
 
     public void open() {
-
         driver.get(BASE_URL);
     }
 

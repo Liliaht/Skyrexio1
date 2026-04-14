@@ -11,6 +11,7 @@ public class LoginTest extends BaseTest {
     public void checkLogin() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
+
         assertEquals(productsPage.getTitle(), "Products");
     }
 
@@ -33,31 +34,3 @@ public class LoginTest extends BaseTest {
         };
     }
 }
-/*    @Test
-    public void checkEmptyUserLogin() {
-        loginPage.open();
-        loginPage.login("", "secret_sauce");
-        assertTrue(loginPage.isErrorMsgDisplayed(), "The error message fails to apper");
-        assertEquals(loginPage.errorMessageText(), "Epic sadface: Username is required",
-                "Error message doesen't correspond");
-    }
-
-    @Test
-    public void checkUpperCasedLogin() {
-        loginPage.open();
-        loginPage.login("standard_user", "");
-        assertTrue(loginPage.isErrorMsgDisplayed(), "The error message fails to apper");
-        assertEquals(loginPage.errorMessageText(), "Epic sadface: Password is required",
-                "Error message doesen't correspond");
-    }
-
-    @Test
-    public void checkLockedUserLogin() {
-        loginPage.open();
-        loginPage.login("Standard_user", "secret_sauce");
-        assertTrue(loginPage.isErrorMsgDisplayed(), "The error message fails to apper");
-        assertEquals(loginPage.errorMessageText(), "Epic sadface: Username and password do not match any user in this service",
-                "Error message doesen't correspond");
-    }
-
- */
