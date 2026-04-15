@@ -15,22 +15,22 @@ public class LoginTest extends BaseTest {
         assertEquals(productsPage.getTitle(), "Products");
     }
 
-    @Test(dataProvider = "incorrctDate")
+    @Test(dataProvider = "incorrectData")
     public void checkIncorrectLogin(String user, String password, String errorMeesage) {
         loginPage.open();
         loginPage.login(user, password);
-        assertTrue(loginPage.isErrorMsgDisplayed(), "The error message fails to apper");
+        assertTrue(loginPage.isErrorMsgDisplayed(), "The error message fails to appear");
         assertEquals(loginPage.errorMessageText(), errorMeesage,
-                "Error message doesen't correspond");
+                "Error message doesn't correspond");
     }
 
-    @DataProvider(name = "incorrctDate")
+    @DataProvider(name = "incorrectData")
     public Object[][] loginData() {
         return new Object[][]{
-                {"locked_out_user", "secret_sauce", "Epic sadface: Sorry, this user has been locked out."},
-                {"", "secret_sauce", "Epic sadface: Username is required"},
-                {"standard_user", "", "Epic sadface: Password is required"},
-                {"Standard_user", "secret_sauce", "Epic sadface: Username and password do not match any user in this service"}
+                {"locked_out_user", "secret_sauce", "Epic sad face: Sorry, this user has been locked out."},
+                {"", "secret_sauce", "Epic sad face: Username is required"},
+                {"standard_user", "", "Epic sad face: Password is required"},
+                {"Standard_user", "secret_sauce", "Epic sad face: Username and password do not match any user in this service"}
         };
     }
 }

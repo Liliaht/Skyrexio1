@@ -18,13 +18,10 @@ public class ProductsTest extends BaseTest {
         assertTrue(productsPage.pageTitleDisplayed());
         assertEquals(productsPage.getGoodsQuantity(), 6);
         productsPage.addToCart();
-        /*productsPage.addToCart("Sauce Labs Onesie");
-        productsPage.addToCart("Test.allTheThings() T-Shirt (Red)");*/
 
         for (String goods : goodsList) {
             productsPage.addToCart(goods);
         }
-
         assertEquals(productsPage.chekCounterValue(), "4");
         assertEquals(productsPage.chekCounterColor(), "rgba(226, 35, 26, 1)");
         productsPage.clickCartIcon();

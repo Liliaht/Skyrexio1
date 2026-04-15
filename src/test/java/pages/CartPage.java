@@ -15,14 +15,12 @@ public class CartPage extends BasePage {
     }
 
     public ArrayList<String> getProductsNames() {
-
         List<WebElement> allProducts = driver.findElements(product);
         ArrayList<String> names = new ArrayList<>();
 
         for (WebElement product : allProducts) {
             names.add(product.getText());
         }
-
         return names;
     }
 }
