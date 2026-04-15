@@ -7,7 +7,7 @@ public class LoginPage extends BasePage {
     private final By userField = By.cssSelector("[id='user-name']");
     private final By passwordField = By.xpath("//*[@placeholder='Password']");
     private final By submitButton = By.cssSelector("[data-test='login-button']");
-    private final By errorMsg = By.xpath("//*[@data-test='error']");
+    private final By errorMsg = By.cssSelector(DATA_TEST_PATTERN.formatted("error"));
     private final By errorMessageText = By.xpath("//*[@data-test='error']");
 
     public LoginPage(WebDriver driver) {
@@ -18,10 +18,22 @@ public class LoginPage extends BasePage {
         driver.get(BASE_URL);
     }
 
+    public void open(final String url) {
+        driver.get(BASE_URL + url);
+    }
+
     public void login(String login, String password) {
-        driver.findElement(userField).sendKeys(login);
-        driver.findElement(passwordField).sendKeys(password);
+        fillInLoginField(login);
+        fillInPassField(password);
         driver.findElement(submitButton).click();
+    }
+
+    public void fillInLoginField(String login) {
+        driver.findElement(userField).sendKeys(login);
+    }
+
+    public void fillInPassField(String password) {
+        driver.findElement(passwordField).sendKeys(password);
     }
 
     public boolean isErrorMsgDisplayed() {
