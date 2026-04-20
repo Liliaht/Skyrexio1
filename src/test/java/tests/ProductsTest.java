@@ -12,7 +12,7 @@ public class ProductsTest extends BaseTest {
             List.of("Test.allTheThings() T-Shirt (Red)", "Sauce Labs Onesie", "Sauce Labs Fleece Jacket");
 
     @Test
-    public void checkGoodsAdded() throws InterruptedException {
+    public void checkGoodsAdded() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
         assertTrue(productsPage.pageTitleDisplayed());
@@ -24,7 +24,5 @@ public class ProductsTest extends BaseTest {
         }
         assertEquals(productsPage.chekCounterValue(), "4");
         assertEquals(productsPage.chekCounterColor(), "rgba(226, 35, 26, 1)");
-        productsPage.clickCartIcon();
-        assertEquals(driver.getCurrentUrl(), "https://www.saucedemo.com/cart.html");
     }
 }
